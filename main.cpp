@@ -207,7 +207,6 @@ void char_check(string &line)
 				getline(cin, line);
 			}
 		}
-		i++;
 	}
 	cout << endl;
 }
