@@ -18,30 +18,50 @@ int main()
   static string new_key;
   static string encrypt_msg;
 
+  cout << "  .____                  __        ____/\\__   ____  __.                   \n";
+	cout << "  |    |    ____   ___  |  | __   /   / /_/  |    |/ _|____ __.__.         \n";
+	cout << "  |    |   /  _ \\_/ __\\ |  |/ /   \\__/ /_ \\  |      <_/ __ (  |  |     \n";
+	cout << "  |    |__(  (_) )  \\___|    (    / / /__) ) |    |  \\  __/\\___  |      \n";
+	cout << "  |_______ \\____/ \\___  }__|_ \\  /_/ /__  /  |____|__ \\__  > ____|     \n";
+	cout << "          \\/          \\/     \\/    \\/   \\/           \\/  \\/\\/    \n\n";
+	cout << "                            A G.C.K. Program                           \n\n\n";
+  
   do
   {
-   cout << "Please select from the following options.\n";
-    cout << "1) Encrypt a message.\n";
-    cout << "2) Decrypt a message.\n";
-    cout << "3) Exit the program.\n";
-    cout << "Enter choice: ";
+   
+cout << "  ___________________________________________  \n";
+		cout << " | Please select from the following options. | \n";
+		cout << " |===========================================| \n";
+		cout << " | 1)-------- Encrypt a message.             | \n";
+		cout << " | 2)-------- Decrypt a message.             | \n";
+		cout << " | 3)-------- Exit the program.              | \n";
+		cout << " |___________________________________________| \n\n";
+		cout << "            ***  Enter choice  ***           ";
     cin >> choice;
+    
     while ((choice < 1) || (choice > 3))
     {
-      cout << "\nThat is not a valid option. Please choose again.\n";
-      cout << "Enter choice: ";
-      cin >> choice;
+			cout << "  ___________________________________________  \n";
+			cout << " |        That is not a valid option.        | \n";
+			cout << " |           Please choose again.            | \n";
+			cout << " |___________________________________________| \n\n";
+			cout << "            ***  Enter choice  ***           ";
+			cin >> choice;
     }
 
     if (choice == 1)
     {
      cin.ignore();
-     cout << "\nEnter message to be encrypted: ";
+     cout << "  ___________________________________________  \n";
+		 cout << " |      Enter message to be encrypted:       | \n";
+		 cout << " |___________________________________________| \n\n --> ";
      getline(cin, user_msg);
      char_check(user_msg);
      upper_char(user_msg);
        
-     cout << "Enter a key word for decryption: ";
+		 cout << "  ___________________________________________  \n";
+		 cout << " |      Enter a key word for decryption:     | \n";
+		 cout << " |___________________________________________| \n\n --> ";
      getline(cin, user_key);
      char_check(user_key);
      upper_char(user_key);
@@ -49,14 +69,14 @@ int main()
      new_key = keymaker(user_msg, user_key);
      encrypt_msg = encrypt(user_msg, new_key);
      
-     cout << "\nYour key for this message is : " << new_key << endl;
-     cout << "Your encrypted message is: " << encrypt(user_msg, keymaker(user_msg, user_key)) << endl << endl;
+		 cout << "\n  Your key for this message is: \n  --> " << new_key << endl;
+		 cout << "  Your encrypted message is: \n  -->" << encrypt(user_msg, keymaker(user_msg, user_key)) << endl << endl;
     }
 
     else if (choice == 2)
     {
-      cout << "\nThe key for this message is: " << new_key << endl;
-      cout << "The decrypted msg is: " << decrypt(encrypt_msg, new_key) << endl << endl;
+				cout << "\n  The key for this message is: \n  --> " << new_key << endl;
+				cout << "  The decrypted msg is: \n  --> " << decrypt(encrypt_msg, new_key) << endl << endl;
     }
 
     else
