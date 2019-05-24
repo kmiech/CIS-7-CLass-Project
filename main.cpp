@@ -30,7 +30,7 @@ int main()
 	do
 	{
 
-		cout << "  ___________________________________________  \n";
+		cout << "\n  ___________________________________________  \n";
 		cout << " | Please select from the following options. | \n";
 		cout << " |===========================================| \n";
 		cout << " | 1)-------- Encrypt a message.             | \n";
@@ -117,10 +117,10 @@ int main()
 		}
 
 		else
-    {
+		{
 			cout << "              ___________________________________________  \n";
 			cout << "             |  ******** THANK YOU FOR USING **********  | \n";
-		    cout << "             |___________________________________________| \n";
+			cout << "             |___________________________________________| \n";
 			cout << "  .____                  __        ____/\\__   ____  __.                   \n";
 			cout << "  |    |    ____   ___  |  | __   /   / /_/  |    |/ _|____ __.__.         \n";
 			cout << "  |    |   /  _ \\_/ __\\ |  |/ /   \\__/ /_ \\  |      <_/ __ (  |  |     \n";
@@ -128,7 +128,7 @@ int main()
 			cout << "  |_______ \\____/ \\___  }__|_ \\  /_/ /__  /  |____|__ \\__  > ____|     \n";
 			cout << "          \\/          \\/     \\/    \\/   \\/           \\/  \\/\\/    \n\n";
 			cout << "                            A G.C.K. Program                           \n\n\n";
-    }
+		}
 
 	} while (choice != 3); //sentinel to end do-while loop
 
@@ -192,7 +192,7 @@ string keymaker(string msg, string key)
 void char_check(string &line)
 {
 	int i = 0;
-	while (i < line.length())
+	while (!((line[i] >= 'A' && line[i] <= 'Z') || (line[i] >= 'a' && line[i] <= 'z') || (line[i] == ' ')))
 	{
 		for (int i = 0; i < line.length(); i++)
 		{
