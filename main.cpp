@@ -117,6 +117,7 @@ int main()
 		}
 
 		else
+    {
 			cout << "              ___________________________________________  \n";
 			cout << "             |  ******** THANK YOU FOR USING **********  | \n";
 		    cout << "             |___________________________________________| \n";
@@ -127,7 +128,7 @@ int main()
 			cout << "  |_______ \\____/ \\___  }__|_ \\  /_/ /__  /  |____|__ \\__  > ____|     \n";
 			cout << "          \\/          \\/     \\/    \\/   \\/           \\/  \\/\\/    \n\n";
 			cout << "                            A G.C.K. Program                           \n\n\n";
-			
+    }
 
 	} while (choice != 3); //sentinel to end do-while loop
 
@@ -191,7 +192,7 @@ string keymaker(string msg, string key)
 void char_check(string &line)
 {
 	int i = 0;
-	while (!((line[i] >= 'A' && line[i] <= 'Z') || (line[i] >= 'a' && line[i] <= 'z') || (line[i] == ' ')))
+	while (i < line.length())
 	{
 		for (int i = 0; i < line.length(); i++)
 		{
