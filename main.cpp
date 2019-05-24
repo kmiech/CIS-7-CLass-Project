@@ -71,7 +71,7 @@ int main()
 			encrypt_msg = encrypt(user_msg, new_key);
 
 			cout << "\n  Your key for this message is: \n  --> " << new_key << endl;
-			cout << "  Your encrypted message is: \n  -->" << encrypt(user_msg, keymaker(user_msg, user_key)) << endl << endl;
+			cout << "  Your encrypted message is: \n  --> " << encrypt(user_msg, keymaker(user_msg, user_key)) << endl << endl;
 		}
 
 		else if (choice == 2)
@@ -110,15 +110,28 @@ int main()
 			}
 			else
 			{
-				cout << "Enter message to be decrypt: \n\n";
+				cout << "  ___________________________________________  \n";
+				cout << " |      Enter message to be decrypt:         | \n";
+				cout << " |___________________________________________| \n\n --> ";
 			}
 		}
 
 		else
-			cout << "Thank you for using this program.\n";
+			cout << "              ___________________________________________  \n";
+			cout << "             |  ******** THANK YOU FOR USING **********  | \n";
+		    cout << "             |___________________________________________| \n";
+			cout << "  .____                  __        ____/\\__   ____  __.                   \n";
+			cout << "  |    |    ____   ___  |  | __   /   / /_/  |    |/ _|____ __.__.         \n";
+			cout << "  |    |   /  _ \\_/ __\\ |  |/ /   \\__/ /_ \\  |      <_/ __ (  |  |     \n";
+			cout << "  |    |__(  (_) )  \\___|    (    / / /__) ) |    |  \\  __/\\___  |      \n";
+			cout << "  |_______ \\____/ \\___  }__|_ \\  /_/ /__  /  |____|__ \\__  > ____|     \n";
+			cout << "          \\/          \\/     \\/    \\/   \\/           \\/  \\/\\/    \n\n";
+			cout << "                            A G.C.K. Program                           \n\n\n";
+			
 
 	} while (choice != 3); //sentinel to end do-while loop
 
+	system("Pause");
 	return 0;
 }
 
@@ -157,20 +170,20 @@ string keymaker(string msg, string key)
 {
 	int tmp = msg.length();
 
-	for (int i = 0; i < msg.length() ; i++)
+	for (int i = 0; i < msg.length(); i++)
 	{
 		if (tmp == i)
 			i = 0;
 		if (key.length() == msg.length())
-    {
+		{
 			break;
-    }
-    if(key.length() < msg.length())
-    {
-      key.push_back(key[i]);
-    }
-     if (key.length() > msg.length())
-      key.pop_back();
+		}
+		if (key.length() < msg.length())
+		{
+			key.push_back(key[i]);
+		}
+		if (key.length() > msg.length())
+			key.pop_back();
 	}
 	return key;
 }
@@ -185,7 +198,11 @@ void char_check(string &line)
 			if (!((line[i] >= 'A' && line[i] <= 'Z') || (line[i] >= 'a' && line[i] <= 'z') || (line[i] == ' ')))
 			{
 				i = 0;
-				cout << "Characters only please. Enter message: ";
+				cout << "  ___________________________________________  \n";
+				cout << " |        That is not a valid option.        | \n";
+				cout << " |         Characters only please.           | \n";
+				cout << " |___________________________________________| \n\n";
+				cout << " Enter message: \n  --> ";
 				getline(cin, line);
 			}
 		}
