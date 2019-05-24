@@ -152,17 +152,25 @@ string decrypt(string msg, string key)
 	return tmp_decrypt;
 }
 
+
 string keymaker(string msg, string key)
 {
-	int tmp = msg.size();
+	int tmp = msg.length();
 
-	for (int i = 0; ; i++)
+	for (int i = 0; i < msg.length() ; i++)
 	{
 		if (tmp == i)
 			i = 0;
-		if (key.size() == msg.size())
+		if (key.length() == msg.length())
+    {
 			break;
-		key.push_back(key[i]);
+    }
+    if(key.length() < msg.length())
+    {
+      key.push_back(key[i]);
+    }
+     if (key.length() > msg.length())
+      key.pop_back();
 	}
 	return key;
 }
