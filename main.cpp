@@ -107,9 +107,14 @@ string keymaker(string msg, string key)
   {
     if (tmp == i)
       i = 0;
+
     if (key.size() == msg.size())
-      break;
+   {
+    break;
     key.push_back(key[i]);
+   }
+    if (key.size() > msg.size())
+      key.pop_back();
   }
   return key;
 }
