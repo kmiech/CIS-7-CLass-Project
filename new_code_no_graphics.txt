@@ -8,8 +8,8 @@ using namespace std;
 const string TABLE = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz !#$%&()\'\"*+,-./0123456789:;<=>?@[\\]^_`{|}~";
 
 string keymaker(string, string);
-string en_crypt(string, string, vector<int>, vector<int>);
-string de_crypt(string, string, vector<int>, vector<int>);
+string en_crypt(string, vector<int>, vector<int>);
+string de_crypt(string, vector<int>, vector<int>);
 vector<int> convert(string, vector<int> &);
 int main()
 {
@@ -50,6 +50,19 @@ int main()
 		if (choice == 1)
 		{
 			cin.ignore();
+			if(encrypt.length() > 0)
+      {
+        encrypt.clear();
+        user_msg.clear();
+        user_key.clear();
+        makekey.clear();
+        newmsg.clear();
+        newmsg.shrink_to_fit();
+        newkey.clear();
+        newkey.shrink_to_fit();
+        newencrypt.clear();
+        newencrypt.shrink_to_fit();
+      }
 			cout << "              ___________________________________________  \n";
 			cout << "             |      Enter message to be encrypted:       | \n";
 			cout << "             |___________________________________________| \n\n --> ";
@@ -98,7 +111,7 @@ int main()
 				if (choice == 1)
 				{
 					cout << "\n  The key for this message is: \n  --> " << makekey << endl;
-					cout << "\n  The decrypted msg is: \n  --> " << de_crypt(decrypt, encrypt, newencrypt, newkey) << endl << endl;
+					cout << "\n  The decrypted msg is: \n  --> " << de_crypt(encrypt, newencrypt, newkey) << endl << endl;
 				}
 
 				else
@@ -116,7 +129,7 @@ int main()
 					convert(sec_msg, own_msg);
 					convert(sec_key, own_key);
 
-					cout << "\n  Your decrypted message is: \n  --> " << de_crypt(decrypt, sec_msg, own_msg, own_key) << endl << endl;
+					cout << "\n  Your decrypted message is: \n  --> " << de_crypt(sec_msg, own_msg, own_key) << endl << endl;
 					own_msg.clear();
 					own_msg.shrink_to_fit();
 					own_key.clear();
@@ -135,7 +148,7 @@ int main()
 				convert(sec_key, own_key);
 
 
-				cout << "\n  Your decrypted message is: \n  --> " << de_crypt(decrypt, sec_msg, own_msg, own_key) << endl << endl;
+				cout << "\n  Your decrypted message is: \n  --> " << de_crypt(sec_msg, own_msg, own_key) << endl << endl;
 				own_msg.clear();
 				own_msg.shrink_to_fit();
 				own_key.clear();
@@ -173,25 +186,27 @@ vector<int> convert(string str, vector<int> &vec)
 	return vec;
 }
 
-string en_crypt(string user_msg, string encrypt, vector<int> newmsg, vector<int> newkey)
+string en_crypt(string user_msg, vector<int> newmsg, vector<int> newkey)
 {
 	int tmp;
+	string tmp_encrypt;
 	for (int i = 0; i < user_msg.length(); i++)
 	{
 		tmp = (newmsg[i] + newkey[i]) % 95;
-		encrypt.push_back(TABLE[tmp]);
+		tmp_encrypt.push_back(TABLE[tmp]);
 	}
-	return encrypt;
+	return tmp_encrypt;
 }
-string de_crypt(string decrypt, string encrypt, vector<int> newencrypt, vector<int> newkey)
+string de_crypt(string encrypt, vector<int> newencrypt, vector<int> newkey)
 {
 	int tmp;
+	string tmp_decrypt;
 	for (int i = 0; i < encrypt.length(); i++)
 	{
 		tmp = (newencrypt[i] - newkey[i] + 95) % 95;
-		decrypt.push_back(TABLE[tmp]);
+		tmp_decrypt.push_back(TABLE[tmp]);
 	}
-	return decrypt;
+	return tmp_decrypt;
 }
 
 string keymaker(string msg, string key)
