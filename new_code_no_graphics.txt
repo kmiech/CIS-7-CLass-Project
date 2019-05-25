@@ -14,8 +14,6 @@ int main()
 {
 	int choice, tmp;
 	string user_msg, user_key, encrypt, decrypt, makekey;
-	//static string new_key;
-	//static string encrypt_msg;
 	vector<int> newmsg, newkey, newencrypt;
 	
 	do
@@ -46,15 +44,6 @@ int main()
       convert(user_msg, newmsg);
       convert(makekey, newkey);
 
-		/*	for (int i = 0; i < user_msg.length(); i++)
-				for (int t = 0; t < TABLE.length(); t++)				
-					if (user_msg[i] == TABLE[t])
-						newmsg.push_back(t);
-		
-			for (int i = 0; i < makekey.length(); i++)			
-				for (int t = 0; t < TABLE.length(); t++)				
-					if (makekey[i] == TABLE[t])					
-						newkey.push_back(t);*/
 									
 			for (int i = 0; i < user_msg.length(); i++)
 			{
