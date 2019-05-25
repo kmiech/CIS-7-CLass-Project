@@ -116,14 +116,15 @@ int main()
 
 				else
 				{
+					cin.ignore();
 					cout << "              ___________________________________________  \n";
 					cout << "             |      Enter key word for decryption:       | \n";
 					cout << "             |___________________________________________| \n\n --> ";
-					cin >> sec_key;
+					getline(cin, sec_key);
 					cout << "              ___________________________________________  \n";
 					cout << "             |      Enter message to be decrypted:       | \n";
 					cout << "             |___________________________________________| \n\n --> ";
-					cin >> sec_msg;
+					getline(cin, sec_msg);
 
 
 					convert(sec_msg, own_msg);
@@ -192,7 +193,7 @@ string en_crypt(string user_msg, vector<int> newmsg, vector<int> newkey)
 	string tmp_encrypt;
 	for (int i = 0; i < user_msg.length(); i++)
 	{
-		tmp = (newmsg[i] + newkey[i]) % 95;
+		tmp = (newmsg[i] + newkey[i] + 43) % 95;
 		tmp_encrypt.push_back(TABLE[tmp]);
 	}
 	return tmp_encrypt;
@@ -203,7 +204,7 @@ string de_crypt(string encrypt, vector<int> newencrypt, vector<int> newkey)
 	string tmp_decrypt;
 	for (int i = 0; i < encrypt.length(); i++)
 	{
-		tmp = (newencrypt[i] - newkey[i] + 95) % 95;
+		tmp = (newencrypt[i] - newkey[i] + 52) % 95;
 		tmp_decrypt.push_back(TABLE[tmp]);
 	}
 	return tmp_decrypt;
