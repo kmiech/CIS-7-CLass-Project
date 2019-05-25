@@ -73,7 +73,7 @@ int main()
 		else if (choice == 2)
 		{
 			convert(encrypt, newencrypt);
-			// decrypt = de_crypt(decrypt,encrypt, newencrypt, newkey);
+			
 			if (user_msg.length() > 0)
 			{
 				cout << "              ___________________________________________  \n";
@@ -106,20 +106,41 @@ int main()
 					cout << "              ___________________________________________  \n";
 					cout << "             |      Enter key word for decryption:       | \n";
 					cout << "             |___________________________________________| \n\n --> ";
-					cin >> user_key;
+					cin >> sec_key;
 					cout << "              ___________________________________________  \n";
 					cout << "             |      Enter message to be decrypted:       | \n";
 					cout << "             |___________________________________________| \n\n --> ";
-					cin >> user_msg;
+					cin >> sec_msg;
 
-					makekey = keymaker(user_msg, user_key);
-					convert(user_msg, newmsg);
-					convert(makekey, newkey);
+					
+          				convert(sec_msg, own_msg);
+          				convert(sec_key, own_key);
 
+         				 cout << "Your decrypted message is: "<< de_crypt(decrypt, sec_msg, own_msg, own_key)<< 							endl<<endl;     
+         				 own_msg.clear();
+        				  own_msg.shrink_to_fit();        
+         				 own_key.clear();      
+        				  own_key.shrink_to_fit();
 				}
-
-
 			}
+			else
+    		       {
+          		  cout << "Please enter your keyword: ";
+         		  cin >> sec_key;
+         	          cout << "Please enter encrypted message: ";
+           		  cin >> sec_msg;
+
+         
+          		  convert(sec_msg, own_msg);
+          		  convert(sec_key, own_key);
+       
+
+         		  cout << "Your decrypted message is: " << de_crypt(decrypt, sec_msg, own_msg, own_key)<< endl<<endl;     
+         		  own_msg.clear();
+          		  own_msg.shrink_to_fit();        
+          		  own_key.clear();      
+		  	  own_key.shrink_to_fit();
+    		        }
 		}
 
 		else
