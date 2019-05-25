@@ -7,8 +7,9 @@ using namespace std;
 
 const string TABLE = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz !#$%&()\'\"*+,-./0123456789:;<=>?@[\\]^_`{|}~";
 
-
 string keymaker(string, string);
+string de_crypt(string, string, vector<int>, vector<int>);
+vector<int> convert(string, vector<int> &);
 int main()
 {
 	int choice, tmp;
@@ -42,8 +43,10 @@ int main()
 			getline(cin, user_key);
 
 			makekey = keymaker(user_msg, user_key);
+      convert(user_msg, newmsg);
+      convert(makekey, newkey);
 
-			for (int i = 0; i < user_msg.length(); i++)
+		/*	for (int i = 0; i < user_msg.length(); i++)
 				for (int t = 0; t < TABLE.length(); t++)				
 					if (user_msg[i] == TABLE[t])
 						newmsg.push_back(t);
@@ -51,7 +54,7 @@ int main()
 			for (int i = 0; i < makekey.length(); i++)			
 				for (int t = 0; t < TABLE.length(); t++)				
 					if (makekey[i] == TABLE[t])					
-						newkey.push_back(t);
+						newkey.push_back(t);*/
 									
 			for (int i = 0; i < user_msg.length(); i++)
 			{
@@ -65,31 +68,72 @@ int main()
 
 		else if (choice == 2)
 		{
-			for (int i = 0; i < encrypt.length(); i++)			
-				for (int t = 0; t < TABLE.length(); t++)				
-					if (TABLE[t] == encrypt[i])					
-						newencrypt.push_back(t);
-					
-				
-			
-			for (int i = 0; i < encrypt.length(); i++)
-			{
-				tmp = (newencrypt[i] - newkey[i] + 95) % 95;
-				decrypt.push_back(TABLE[tmp]);
-			}
+      convert(encrypt, newencrypt);
+			decrypt =	de_crypt(decrypt,encrypt, newencrypt, newkey);
 
-			cout << "\nThe key for this message is: " << makekey << endl;
-			cout << "The decrypted msg is: " << decrypt << endl << endl;
+      if (user_msg.length() > 0)
+      {
+        cout << "  ___________________________________________  \n";
+				cout << " |      What would you like to decrypt?      | \n";
+				cout << " |===========================================| \n";
+				cout << " | 1) Decrypt last message.                  | \n";
+				cout << " | 2) Input a message for decryption.        | \n";
+				cout << " |___________________________________________|\n\n";
+				cout << "            ***  Enter choice  ***           ";
+				cin >> choice;
+        	while ((choice < 1) || (choice > 2))
+				{
+					cout << "  ___________________________________________  \n";
+					cout << " |        That is not a valid option.        | \n";
+					cout << " |           Please choose again.            | \n";
+					cout << " |___________________________________________| \n\n";
+					cout << "            ***  Enter choice  ***           ";
+					cin >> choice;
+				}
+        
+        if (choice == 1)
+        {
+			  cout << "\nThe key for this message is: " << makekey << endl;
+			  cout << "The decrypted msg is: " << decrypt << endl << endl;
+        }
+
+        else
+				{
+					cout << "Print out for 2nd choice.\n";
+				}
+			
+
+      }
 		}
 
 		else
 		{
-			cout << "Thank you for using this program.\n";
+			cout << "\nThank you for using this program.\n";
 		}
 
 	} while (choice != 3); //sentinel to end do-while loop
 
 	return 0;
+}
+
+vector<int> convert(string str, vector<int> &vec)
+{
+  for (int i = 0; i < str.length(); i++)
+				for (int t = 0; t < TABLE.length(); t++)				
+					if (str[i] == TABLE[t])
+						vec.push_back(t);
+            return vec;
+}
+
+string de_crypt(string decrypt, string encrypt, vector<int> newencrypt, vector<int> newkey)
+{
+  int tmp;
+  	for (int i = 0; i < encrypt.length(); i++)
+			{
+				tmp = (newencrypt[i] - newkey[i] + 95) % 95;
+				decrypt.push_back(TABLE[tmp]);
+			}
+      return decrypt;
 }
 
 string keymaker(string msg, string key)
