@@ -76,7 +76,7 @@ int main()
 			makekey = keymaker(user_msg, user_key);
 			convert(user_msg, newmsg);
 			convert(makekey, newkey);
-			encrypt = en_crypt(user_msg, encrypt, newmsg, newkey);
+			encrypt = en_crypt(user_msg, newmsg, newkey);
 
 
 			cout << "\n  Your key for this message is: \n  --> " << makekey << endl;
