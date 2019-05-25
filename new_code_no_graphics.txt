@@ -1,0 +1,115 @@
+/*Seth, George, Chris
+Vigenere Ciphere Project*/
+#include <iostream>
+#include <string>
+#include <vector>
+using namespace std;
+
+const string TABLE = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz !#$%&()\'\"*+,-./0123456789:;<=>?@[\\]^_`{|}~";
+
+
+string keymaker(string, string);
+int main()
+{
+	int choice, tmp;
+	string user_msg, user_key, encrypt, decrypt, makekey;
+	//static string new_key;
+	//static string encrypt_msg;
+	vector<int> newmsg, newkey, newencrypt;
+	
+	do
+	{
+		cout << "Please select from the following options.\n";
+		cout << "1) Encrypt a message.\n";
+		cout << "2) Decrypt a message.\n";
+		cout << "3) Exit the program.\n";
+		cout << "Enter choice: ";
+		cin >> choice;
+		while ((choice < 1) || (choice > 3))
+		{
+			cout << "\nThat is not a valid option. Please choose again.\n";
+			cout << "Enter choice: ";
+			cin >> choice;
+		}
+
+		if (choice == 1)
+		{
+			cin.ignore();
+			cout << "\nEnter message to be encrypted: ";
+			getline(cin, user_msg);
+
+			cout << "Enter a key word for decryption: ";
+			getline(cin, user_key);
+
+			makekey = keymaker(user_msg, user_key);
+
+			for (int i = 0; i < user_msg.length(); i++)
+				for (int t = 0; t < TABLE.length(); t++)				
+					if (user_msg[i] == TABLE[t])
+						newmsg.push_back(t);
+		
+			for (int i = 0; i < makekey.length(); i++)			
+				for (int t = 0; t < TABLE.length(); t++)				
+					if (makekey[i] == TABLE[t])					
+						newkey.push_back(t);
+									
+			for (int i = 0; i < user_msg.length(); i++)
+			{
+				tmp = (newmsg[i] + newkey[i]) % 95;
+				encrypt.push_back(TABLE[tmp]);
+			}
+
+			cout << "\nYour key for this message is : " << makekey << endl;
+			cout << "Your encrypted message is: " << encrypt << endl << endl;
+		}
+
+		else if (choice == 2)
+		{
+			for (int i = 0; i < encrypt.length(); i++)			
+				for (int t = 0; t < TABLE.length(); t++)				
+					if (TABLE[t] == encrypt[i])					
+						newencrypt.push_back(t);
+					
+				
+			
+			for (int i = 0; i < encrypt.length(); i++)
+			{
+				tmp = (newencrypt[i] - newkey[i] + 95) % 95;
+				decrypt.push_back(TABLE[tmp]);
+			}
+
+			cout << "\nThe key for this message is: " << makekey << endl;
+			cout << "The decrypted msg is: " << decrypt << endl << endl;
+		}
+
+		else
+		{
+			cout << "Thank you for using this program.\n";
+		}
+
+	} while (choice != 3); //sentinel to end do-while loop
+
+	return 0;
+}
+
+string keymaker(string msg, string key)
+{
+	int tmp = msg.length();
+
+	for (int i = 0; i < msg.length(); i++)
+	{
+		if (tmp == i)
+			i = 0;
+		if (key.length() == msg.length())
+		{
+			break;
+		}
+		if (key.length() < msg.length())
+		{
+			key.push_back(key[i]);
+		}
+		if (key.length() > msg.length())
+			key.pop_back();
+	}
+	return key;
+}
