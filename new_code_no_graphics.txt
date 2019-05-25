@@ -15,7 +15,7 @@ int main()
 {
 	int choice, tmp;
 	string user_msg, user_key, encrypt, decrypt, makekey, sec_key, sec_msg;
-	vector<int> newmsg, newkey, newencrypt;
+	vector<int> newmsg, newkey, newencrypt, own_msg, own_key;
 
 	cout << "  .____                  __        ____/\\__   ____  __.                   \n";
 	cout << "  |    |    ____   ___  |  | __   /   / /_/  |    |/ _|____ __.__.         \n";
