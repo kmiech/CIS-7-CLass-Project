@@ -27,7 +27,7 @@ int main()
 
 	do
 	{
-		cout << "\n              ___________________________________________  \n";
+		cout << "              ___________________________________________  \n";
 		cout << "             | Please select from the following options. | \n";
 		cout << "             |===========================================| \n";
 		cout << "             | 1)-------- Encrypt a message.             | \n";
