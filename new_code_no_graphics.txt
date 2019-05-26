@@ -139,6 +139,7 @@ int main()
 			}
 			else
 			{
+				cin.ignore();
 				cout << "\n  Please enter your keyword: \n  --> ";
 				getline(cin, sec_key);
 				cout << "  Please enter encrypted message: \n  --> ";
