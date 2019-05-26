@@ -128,7 +128,7 @@ int main()
 
 
 					convert(sec_msg, own_msg);
-					convert(sec_key, own_key);
+					convert(keymaker(sec_msg, sec_key), own_key);
 
 					cout << "\n  Your decrypted message is: \n  --> " << de_crypt(sec_msg, own_msg, own_key) << endl << endl;
 					own_msg.clear();
@@ -147,7 +147,7 @@ int main()
 
 
 				convert(sec_msg, own_msg);
-				convert(sec_key, own_key);
+				convert(keymaker(sec_msg, sec_key), own_key);
 
 
 				cout << "\n  Your decrypted message is: \n  --> " << de_crypt(sec_msg, own_msg, own_key) << endl << endl;
