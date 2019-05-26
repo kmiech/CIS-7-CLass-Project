@@ -140,9 +140,9 @@ int main()
 			else
 			{
 				cout << "\n  Please enter your keyword: \n  --> ";
-				cin >> sec_key;
+				getline(cin, sec_key);
 				cout << "  Please enter encrypted message: \n  --> ";
-				cin >> sec_msg;
+				getline(cin, sec_msg);
 
 
 				convert(sec_msg, own_msg);
