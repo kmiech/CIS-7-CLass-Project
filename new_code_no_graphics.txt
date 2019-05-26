@@ -17,8 +17,8 @@ int main()
 	string user_msg, user_key, encrypt, decrypt, makekey, sec_key, sec_msg;
 	vector<int> newmsg, newkey, newencrypt, own_msg, own_key;
 
-	cout << "  .____                  __        ____/\\__   ____  __.                   \n";
-	cout << "  |    |    ____   ___  |  | __   /   / /_/  |    |/ _|____ __.__.         \n";
+	cout << "  .____.                .__.       ____/\\__  .____..__.                   \n";
+	cout << "  |    |    ____   ___  |  | __.  /   / /_/  |    |/ _|____ __.__.         \n";
 	cout << "  |    |   /  _ \\_/ __\\ |  |/ /   \\__/ /_ \\  |      <_/ __ (  |  |     \n";
 	cout << "  |    |__(  (_) )  \\___|    (    / / /__) ) |    |  \\  __/\\___  |      \n";
 	cout << "  |_______ \\____/ \\___  }__|_ \\  /_/ /__  /  |____|__ \\__  > ____|     \n";
@@ -50,19 +50,19 @@ int main()
 		if (choice == 1)
 		{
 			cin.ignore();
-			if(encrypt.length() > 0)
-      {
-        encrypt.clear();
-        user_msg.clear();
-        user_key.clear();
-        makekey.clear();
-        newmsg.clear();
-        newmsg.shrink_to_fit();
-        newkey.clear();
-        newkey.shrink_to_fit();
-        newencrypt.clear();
-        newencrypt.shrink_to_fit();
-      }
+			if (encrypt.length() > 0)
+			{
+				encrypt.clear();
+				user_msg.clear();
+				user_key.clear();
+				makekey.clear();
+				newmsg.clear();
+				newmsg.shrink_to_fit();
+				newkey.clear();
+				newkey.shrink_to_fit();
+				newencrypt.clear();
+				newencrypt.shrink_to_fit();
+			}
 			cout << "              ___________________________________________  \n";
 			cout << "             |      Enter message to be encrypted:       | \n";
 			cout << "             |___________________________________________| \n\n --> ";
@@ -162,9 +162,9 @@ int main()
 		{
 			cout << "              ___________________________________________  \n";
 			cout << "             |  ******** THANK YOU FOR USING **********  | \n";
-			cout << "             |___________________________________________| \n";
-			cout << "  .____                  __        ____/\\__   ____  __.                   \n";
-			cout << "  |    |    ____   ___  |  | __   /   / /_/  |    |/ _|____ __.__.         \n";
+			cout << "             |___________________________________________| \n\n";
+			cout << "  .____.                .__.       ____/\\__  .____..__.                   \n";
+			cout << "  |    |    ____   ___  |  | __.  /   / /_/  |    |/ _|____ __.__.         \n";
 			cout << "  |    |   /  _ \\_/ __\\ |  |/ /   \\__/ /_ \\  |      <_/ __ (  |  |     \n";
 			cout << "  |    |__(  (_) )  \\___|    (    / / /__) ) |    |  \\  __/\\___  |      \n";
 			cout << "  |_______ \\____/ \\___  }__|_ \\  /_/ /__  /  |____|__ \\__  > ____|     \n";
