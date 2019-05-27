@@ -11,6 +11,9 @@ string keymaker(string, string);
 string en_crypt(string, vector<int>, vector<int>);
 string de_crypt(string, vector<int>, vector<int>);
 vector<int> convert(string, vector<int> &);
+void clear(string &, string &, string &, string &, vector<int> &, vector<int> &, vector<int> &);
+void clear_decrypt(vector<int> &, vector<int> &);
+
 int main()
 {
 	int choice;
@@ -51,19 +54,9 @@ int main()
 
 		if (choice == 1)
 		{
-			//cin.ignore();
 			if (encrypt.length() > 0)
 			{
-				encrypt.clear();
-				user_msg.clear();
-				user_key.clear();
-				makekey.clear();
-				newmsg.clear();
-				newmsg.shrink_to_fit();
-				newkey.clear();
-				newkey.shrink_to_fit();
-				newencrypt.clear();
-				newencrypt.shrink_to_fit();
+			  clear(encrypt, user_msg, user_key, makekey, newmsg, newkey, newencrypt);
 			}
 			cout << "              ___________________________________________  \n";
 			cout << "             |      Enter message to be encrypted:       | \n";
@@ -79,7 +72,6 @@ int main()
 			convert(user_msg, newmsg);
 			convert(makekey, newkey);
 			encrypt = en_crypt(user_msg, newmsg, newkey);
-
 
 			cout << "\n  Your key for this message is: \n  --> " << makekey << endl;
 			cout << "\n  Your encrypted message is: \n  --> " << encrypt << endl << endl;
@@ -120,7 +112,6 @@ int main()
 
 				else
 				{
-					//cin.ignore();
 					cout << "              ___________________________________________  \n";
 					cout << "             |      Enter message to be decrypted:       | \n";
 					cout << "             |___________________________________________| \n\n --> ";
@@ -131,22 +122,16 @@ int main()
 					cout << "             |___________________________________________| \n\n --> ";
 					getline(cin, sec_key);
 					
-
-
 					convert(sec_msg, own_msg);
 					convert(keymaker(sec_msg, sec_key), own_key);
 
 					cout << "\n  Your decrypted message is: \n  --> " << de_crypt(sec_msg, own_msg, own_key) << endl << endl;
-					own_msg.clear();
-					own_msg.shrink_to_fit();
-					own_key.clear();
-					own_key.shrink_to_fit();
+					clear_decrypt(own_msg, own_key); 
 				}
 			}
+
 			else
-			{
-				//cin.ignore();
-				
+			{	
 				cout << "              ___________________________________________  \n";
 				cout << "             |      Enter message to be decrypted:       | \n";
 				cout << "             |___________________________________________| \n\n --> ";
@@ -157,22 +142,11 @@ int main()
 				cout << "             |___________________________________________| \n\n --> ";
 				getline(cin, sec_key);
 				
-				/*
-				cout << "\n  Please enter your keyword: \n  --> ";
-				getline(cin, sec_key);
-				cout << "  Please enter encrypted message: \n  --> ";
-				getline(cin, sec_msg); */
-
-
 				convert(sec_msg, own_msg);
 				convert(keymaker(sec_msg, sec_key), own_key);
 
-
 				cout << "\n  Your decrypted message is: \n  --> " << de_crypt(sec_msg, own_msg, own_key) << endl << endl;
-				own_msg.clear();
-				own_msg.shrink_to_fit();
-				own_key.clear();
-				own_key.shrink_to_fit();
+				clear_decrypt(own_msg, own_key); 
 			}
 		}
 
@@ -192,8 +166,9 @@ int main()
 
 	} while (choice != 3); //sentinel to end do-while loop
 
-	system("pause");
+	clear(encrypt, user_msg, user_key, makekey, newmsg, newkey, newencrypt);
 
+	system("pause");
 	return 0;
 }
 
@@ -212,7 +187,7 @@ string en_crypt(string user_msg, vector<int> newmsg, vector<int> newkey)
 	string tmp_encrypt;
 	for (int i = 0; i < user_msg.length(); i++)
 	{
-		tmp = (newmsg[i] + newkey[i] + (TABLE.length() - (user_msg.length() % TABLE.length()))) % TABLE.length();
+		tmp = (newmsg[i] + newkey[i] + 45) % 95;
 		tmp_encrypt.push_back(TABLE[tmp]);
 	}
 	return tmp_encrypt;
@@ -224,7 +199,7 @@ string de_crypt(string encrypt, vector<int> newencrypt, vector<int> newkey)
 	string tmp_decrypt;
 	for (int i = 0; i < encrypt.length(); i++)
 	{
-		tmp = (newencrypt[i] - newkey[i] + (encrypt.length() % TABLE.length())) % TABLE.length();
+		tmp = (newencrypt[i] - newkey[i] + 50) % 95;
 		tmp_decrypt.push_back(TABLE[tmp]);
 	}
 	return tmp_decrypt;
@@ -249,4 +224,26 @@ string keymaker(string msg, string key)
 			key.pop_back();
 	}
 	return key;
+}
+
+void clear(string &encrypt, string &user_msg, string &user_key, string &makekey, vector<int> &newmsg, vector<int> &newkey, vector<int> &newencrypt)
+{
+  encrypt.clear();
+	user_msg.clear();
+	user_key.clear();
+	makekey.clear();
+	newmsg.clear();
+	newmsg.shrink_to_fit();
+	newkey.clear();
+	newkey.shrink_to_fit();
+	newencrypt.clear();
+	newencrypt.shrink_to_fit();
+}
+
+void clear_decrypt(vector<int> &own_msg, vector<int> &own_key)
+{
+  own_msg.clear();
+	own_msg.shrink_to_fit();
+	own_key.clear();
+	own_key.shrink_to_fit();
 }
