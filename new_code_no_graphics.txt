@@ -187,7 +187,7 @@ string en_crypt(string user_msg, vector<int> newmsg, vector<int> newkey)
 	string tmp_encrypt;
 	for (int i = 0; i < user_msg.length(); i++)
 	{
-		tmp = (newmsg[i] + newkey[i] + (user_msg.length() % TABLE.length())) % TABLE.length();
+		tmp = (newmsg[i] + newkey[i] + (user_msg.length() % TABLE.length() + (i % TABLE.length()))) % TABLE.length();
 		tmp_encrypt.push_back(TABLE[tmp]);
 	}
 	return tmp_encrypt;
@@ -199,7 +199,7 @@ string de_crypt(string encrypt, vector<int> newencrypt, vector<int> newkey)
 	string tmp_decrypt;
 	for (int i = 0; i < encrypt.length(); i++)
 	{
-		tmp = (newencrypt[i] - newkey[i] + (TABLE.length() - (encrypt.length() % TABLE.length()))) % TABLE.length();
+		tmp = (newencrypt[i] - newkey[i] + ((TABLE.length() * TABLE.length()) - (encrypt.length() % TABLE.length() + (i % TABLE.length())))) % TABLE.length();
 		tmp_decrypt.push_back(TABLE[tmp]);
 	}
 	return tmp_decrypt;
