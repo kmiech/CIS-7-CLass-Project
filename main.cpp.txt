@@ -16,7 +16,7 @@ void clear_decrypt(vector<int> &, vector<int> &);
 
 int main()
 {
-	char choice [0];
+	char choice[2];
 	string user_msg, user_key, encrypt, decrypt, makekey, sec_key, sec_msg;
 	vector<int> newmsg, newkey, newencrypt, own_msg, own_key;
 
@@ -41,7 +41,7 @@ int main()
 		cin >> choice;
 		cin.ignore();
 
-		while ((choice [0] < '1') || (choice [0] > '3'))
+		while ((choice [0] < '1') || (choice [0] > '3') || (choice [1] > ' '))
 		{
 			cout << "              ___________________________________________  \n";
 			cout << "             |        That is not a valid option.        | \n";
@@ -93,7 +93,7 @@ int main()
 				cin >> choice;
 				cin.ignore();
 
-				while ((choice [0] < '1') || (choice [0] > '2'))
+				while ((choice [0] < '1') || (choice [0] > '2') || (choice [1] > ' '))
 				{
 					cout << "              ___________________________________________  \n";
 					cout << "             |        That is not a valid option.        | \n";
