@@ -16,7 +16,7 @@ void clear_decrypt(vector<int> &, vector<int> &);
 
 int main()
 {
-	char choice;
+	char choice [0];
 	string user_msg, user_key, encrypt, decrypt, makekey, sec_key, sec_msg;
 	vector<int> newmsg, newkey, newencrypt, own_msg, own_key;
 
@@ -41,7 +41,7 @@ int main()
 		cin >> choice;
 		cin.ignore();
 
-		while ((choice < '1') || (choice > '3'))
+		while ((choice [0] < '1') || (choice [0] > '3'))
 		{
 			cout << "              ___________________________________________  \n";
 			cout << "             |        That is not a valid option.        | \n";
@@ -52,7 +52,7 @@ int main()
 			cin.ignore();
 		}
 
-		if (choice == '1')
+		if (choice [0] == '1')
 		{
 			if (encrypt.length() > 0)
 			{
@@ -77,7 +77,7 @@ int main()
 			cout << "\n  Your encrypted message is: \n  --> " << encrypt << endl << endl;
 		}
 
-		else if (choice == '2')
+		else if (choice [0] == '2')
 		{
 			convert(encrypt, newencrypt);
 
@@ -93,7 +93,7 @@ int main()
 				cin >> choice;
 				cin.ignore();
 
-				while ((choice < '1') || (choice > '2'))
+				while ((choice [0] < '1') || (choice [0] > '2'))
 				{
 					cout << "              ___________________________________________  \n";
 					cout << "             |        That is not a valid option.        | \n";
@@ -104,7 +104,7 @@ int main()
 					cin.ignore();
 				}
 
-				if (choice == '1')
+				if (choice [0] == '1')
 				{
 					cout << "\n  The key for this message is: \n  --> " << makekey << endl;
 					cout << "\n  The decrypted msg is: \n  --> " << de_crypt(encrypt, newencrypt, newkey) << endl << endl;
@@ -164,7 +164,7 @@ int main()
 			cout << "                            A G.C.K. Program                           \n\n\n";
 		}
 
-	} while (choice != '3'); //sentinel to end do-while loop
+	} while (choice [0] != '3'); //sentinel to end do-while loop
 
 	clear(encrypt, user_msg, user_key, makekey, newmsg, newkey, newencrypt);
 
