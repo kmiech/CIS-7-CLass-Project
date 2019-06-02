@@ -123,6 +123,8 @@ int main()
 					cout << "             |      Enter key word for decryption:       | \n";
 					cout << "             |___________________________________________| \n\n --> ";
 					getline(cin, sec_key);
+					if (sec_key.length() == 0)
+         				   sec_key = ' ';
 					
 					convert(sec_msg, own_msg);
 					convert(keymaker(sec_msg, sec_key), own_key);
@@ -143,6 +145,8 @@ int main()
 				cout << "             |      Enter key word for decryption:       | \n";
 				cout << "             |___________________________________________| \n\n --> ";
 				getline(cin, sec_key);
+				if (sec_key.length() == 0)
+          			  sec_key = ' ';
 				
 				convert(sec_msg, own_msg);
 				convert(keymaker(sec_msg, sec_key), own_key);
