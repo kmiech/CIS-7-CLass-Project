@@ -67,7 +67,9 @@ int main()
 			cout << "             |      Enter a key word for encryption:     | \n";
 			cout << "             |___________________________________________| \n\n --> ";
 			getline(cin, user_key);
-
+			if (user_key.length() == 0)
+         		   user_key = "blank";
+			
 			makekey = keymaker(user_msg, user_key);
 			convert(user_msg, newmsg);
 			convert(makekey, newkey);
