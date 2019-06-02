@@ -12,5 +12,16 @@ After initial run please select from the options in the screen. Your options are
 2. Decrypt a message
 3. Exit the program
 
-If you choose 1, you will be prompted to enter a message to encrypt. Once you enter
-a message it will then prompt you to enter a key word for the encryption.
+If you choose 1, you will be prompted to enter a message to encrypt.
+Once you enter a message it will then prompt you to enter a key word 
+for the encryption. If you don't enter a keyword, "blank" will be your
+default keyword.1
+
+If you choose 2 and have encrypted a previous message, you will be given 
+the option to decrypt the last message or decrypt a new message.
+
+If you choose to decrypt a message and haven't encrypted a message yet, you
+will be prompted to enter a message to be encrypted.
+
+You will be given those options until you choose to quit the program.
+Thank you for using the program.
